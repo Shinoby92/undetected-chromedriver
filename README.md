@@ -1,13 +1,13 @@
 # undetected_chromedriver
 
-BY ULTRAFUNKAMSTERDAM (https://github.com/ultrafunkamsterdam)
+https://github.com/ultrafunkamsterdam/undetected-chromedriver
 
 Optimized Selenium Chromedriver patch which does not trigger anti-bot services like Distill Network.
 Automatically downloads the driver binary and patches it.
 
-* **Tested on version 75,76,77,78,79,80,81
+* **Tested on version 75,76,77,78,79,80,81,83**
 
-* **patching also works on new MS Edge (chromium) webdriver binary**
+* **patching also works on MS Edge (chromium-based) webdriver binary**
 
 
 ## Installation ##
@@ -30,8 +30,8 @@ driver.get('https://distilnetworks.com')
 Needs to be done before importing from selenium package
 
 ```python
-import undetected_chromedriver
-undetected_chromedriver.install()
+import undetected_chromedriver as uc
+uc.install()
 from selenium.webdriver import Chrome
 driver = Chrome()
 driver.get('https://distilnetworks.com')
@@ -40,15 +40,15 @@ driver.get('https://distilnetworks.com')
 
 #### the customized way ####
 ```python
-import undetected_chromedriver
+import undetected_chromedriver as uc
 
 #specify chromedriver version to download and patch
-undetected_chromedriver.TARGET_VERSION = 78
+#this did not work correctly until 1.2.1
+uc.TARGET_VERSION = 78    
 
 # or specify your own chromedriver binary to patch
 undetected_chromedriver.install(
     executable_path='c:/users/user1/chromedriver.exe',
-    target_version=78
 )
 from selenium.webdriver import Chrome, ChromeOptions
 opts = ChromeOptions()
